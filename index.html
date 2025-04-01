@@ -1,345 +1,767 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Visualize Post-Stay Marketing Emails: Interactive Journey</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!-- Using Google Fonts for a modern look -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuestTouch Email Marketing - Pricing</title>
     <style>
-      body {
-        font-family: 'Montserrat', sans-serif;
-        background: #f4f4f4;
-        margin: 0;
-        padding: 20px;
-      }
-      .container {
-        max-width: 1000px;
-        margin: 0 auto;
-        background: #fff;
-        padding: 2rem;
-        border-radius: 12px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      }
-      .hdr {
-        text-align: center;
-        margin-bottom: 2rem;
-      }
-      .hdr .title {
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
-        color: #4169E1;
-      }
-      .hdr .subtitle {
-        color: #666;
-        background-color: #e8f0fe;
-        padding: 4px 12px;
-        border-radius: 4px;
-        display: inline-block;
-      }
-      /* Progress Bar & Stages */
-      .progress-bar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 3rem;
-        position: relative;
-        padding: 0 20px;
-      }
-      .progress-line {
-        position: absolute;
-        height: 2px;
-        background: #e0e0e0;
-        left: 40px;
-        right: 40px;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-      .progress-line-filled {
-        position: absolute;
-        height: 2px;
-        background: #4169E1;
-        left: 40px;
-        width: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        transition: width 0.3s ease;
-      }
-      .stage {
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-        background: #f0f0f0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        z-index: 3;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border: 2px solid transparent;
-      }
-      .stage.active {
-        background: #4169E1;
-        color: white;
-      }
-      .stage.current {
-        border: 2px solid #4169E1;
-        background: white;
-      }
-      /* Content Area */
-      .content-area {
-        margin-top: 2rem;
-      }
-      .email-template {
-        background: #f8f9fe;
-        padding: 2rem;
-        border-radius: 20px;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-      }
-      /* Email Template Styles */
-      .email-container {
-        max-width: 600px;
-        margin: 0 auto;
-        background: #ffffff;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      }
-      .email-header-image {
-        width: 100%;
-        display: block;
-      }
-      .email-content {
-        padding: 20px;
-      }
-      .email-content h1 {
-        color: #4169E1;
-        font-size: 24px;
-        margin-bottom: 10px;
-      }
-      .email-content p {
-        color: #555;
-        font-size: 16px;
-        line-height: 1.5;
-        margin-bottom: 16px;
-      }
-      .email-button {
-        display: inline-block;
-        padding: 12px 20px;
-        background: #4169E1;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 4px;
-        font-weight: bold;
-      }
-      .email-footer {
-        padding: 15px;
-        font-size: 12px;
-        text-align: center;
-        color: #aaa;
-        background: #f9f9f9;
-      }
-      /* Navigation Buttons */
-      .navigation {
-        display: flex;
-        justify-content: space-between;
-        margin-top: 2rem;
-      }
-      button {
-        padding: 0.75rem 1.5rem;
-        border: none;
-        border-radius: 8px;
-        background: #4169E1;
-        color: white;
-        cursor: pointer;
-        transition: background 0.2s;
-        font-size: 1rem;
-      }
-      button:hover:not(:disabled) {
-        background: #3557D1;
-      }
-      button:disabled {
-        background: #e0e0e0;
-        cursor: not-allowed;
-      }
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --button: #0038e0;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --gray: #95a5a6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 50px 0 70px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        .badge {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .problem-section {
+            background-color: white;
+            padding: 80px 0;
+        }
+        
+        .problem-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .problem-title {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: var(--primary);
+            text-align: center;
+        }
+        
+        .problem-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        .problem-text {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: var(--gray);
+        }
+        
+        .problem-points {
+            margin: 30px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .problem-point {
+            background-color: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+        }
+        
+        .problem-point-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--dark);
+            font-size: 1.2rem;
+        }
+        
+        .problem-point-text {
+            color: var(--gray);
+            font-size: 1rem;
+        }
+        
+        .solution-text {
+            font-size: 1.2rem;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(39, 174, 96, 0.1);
+            border-radius: 8px;
+            border-left: 4px solid var(--success);
+            color: var(--dark);
+            font-weight: 500;
+        }
+        
+        .comparison-section {
+            background-color: var(--light);
+            padding: 80px 0;
+        }
+        
+        .comparison-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .comparison-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .comparison-header p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--gray);
+        }
+        
+        .comparison-table {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .comparison-column {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-title {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        
+        .generic-title {
+            background-color: var(--gray);
+        }
+        
+        .comparison-features {
+            padding: 30px;
+        }
+        
+        .feature-item {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-item:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-icon {
+            margin-right: 15px;
+            font-size: 1.2rem;
+            min-width: 24px;
+            text-align: center;
+        }
+        
+        .feature-text {
+            font-size: 1rem;
+        }
+        
+        .pricing-section {
+            padding: 30px 0 80px;
+        }
+        
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .pricing-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .pricing-header p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: var(--gray);
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+            margin-bottom: 60px;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .pricing-card-header {
+            padding: 30px;
+            text-align: center;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        .pricing-emails {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+        
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .pricing-price .currency {
+            font-size: 1.8rem;
+            vertical-align: super;
+            margin-right: 5px;
+        }
+        
+        .pricing-price .period {
+            font-size: 1rem;
+            color: var(--gray);
+            font-weight: normal;
+        }
+        
+        .pricing-savings {
+            display: inline-block;
+            background-color: rgba(39, 174, 96, 0.1);
+            color: var(--success);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+        
+        .pricing-body {
+            padding: 30px;
+        }
+        
+        .pricing-features {
+            list-style-type: none;
+            margin-bottom: 30px;
+        }
+        
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+        
+        .pricing-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background-color: var(--button);
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #002bb1;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--button);
+            color: var(--button);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--button);
+            color: white;
+        }
+        
+        .testimonial {
+            background-color: var(--light);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .testimonial-card {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-text {
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            color: var(--dark);
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .testimonial-position {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .cta {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.4rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            padding: 16px 40px;
+            background-color: var(--button);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+        }
+        
+        .cta-btn:hover {
+            background-color: #002bb1;
+        }
+        
+        .best-value {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #1a6e30; /* Dark green color */
+            color: white;
+            padding: 8px 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transform: translateY(-40%); /* Adjusted to prevent cutting off */
+            border-radius: 20px 0 0 20px;
+        }
+        
+        .featured {
+            position: relative;
+            border: 2px solid #1a6e30; /* Dark green border to match */
+            transform: scale(1.05);
+        }
+
+        .coming-soon {
+            font-size: 0.7rem;
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--secondary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+        
+        .highlight {
+            color: var(--button);
+            font-weight: 700;
+        }
+        
+        .strong {
+            font-weight: 700;
+        }
+        
+        .feature-check {
+            color: var(--success);
+        }
+        
+        .feature-warning {
+            color: #f39c12;
+        }
+        
+        .feature-error {
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .featured {
+                transform: scale(1);
+            }
+            
+            .comparison-table {
+                grid-template-columns: 1fr;
+            }
+            
+            .problem-points {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="hdr">
-        <h1 class="title">Visualize Post-Stay Marketing Emails</h1>
-        <div class="subtitle">Sedona, AZ Hotel</div>
-      </div>
-      <div class="progress-bar">
-        <div class="progress-line"></div>
-        <div class="progress-line-filled"></div>
-        <div class="stage" data-stage="0">1</div>
-        <div class="stage" data-stage="1">2</div>
-        <div class="stage" data-stage="2">3</div>
-        <div class="stage" data-stage="3">4</div>
-      </div>
-      <div id="contentArea" class="content-area">
-        <!-- Email template content will be injected here -->
-      </div>
-      <div class="navigation">
-        <button id="prevBtn">← Previous</button>
-        <button id="nextBtn">Next →</button>
-      </div>
-    </div>
-
-    <script>
-      // Define our four post-stay email templates
-      const stages = [
-        {
-          title: "Repeat Guests",
-          content: `
-            <div class="email-container">
-              <img class="email-header-image" src="https://source.unsplash.com/600x200/?sedona,loyalty" alt="Sedona view">
-              <div class="email-content">
-                <h1>We Love Your Loyalty!</h1>
-                <p>Dear [Guest Name],</p>
-                <p>
-                  Thank you for returning to Sedona time and again. Your trust inspires us to explore even more of what makes our little oasis so special.
-                  Enjoy exclusive local insights and stories curated just for you.
-                </p>
-                <p>
-                  With heartfelt appreciation,<br><strong>Sedona Inn Team</strong>
-                </p>
-                <p><a href="https://www.yourhotelwebsite.com/stories" class="email-button">Discover More</a></p>
-              </div>
-              <div class="email-footer">
-                Sedona Inn | 123 Desert Road, Sedona, AZ | (555) 123-4567
-              </div>
-            </div>
-          `
-        },
-        {
-          title: "Lapsed Guests",
-          content: `
-            <div class="email-container">
-              <img class="email-header-image" src="https://source.unsplash.com/600x200/?sedona,scenery" alt="Sedona view">
-              <div class="email-content">
-                <h1>We Miss You in Sedona</h1>
-                <p>Dear [Guest Name],</p>
-                <p>
-                  It’s been a while since your last visit, and we miss you at our Sedona retreat.
-                  Discover the new art installations, scenic trails, and cultural events transforming our charming town.
-                </p>
-                <p>
-                  We invite you to rediscover Sedona’s magic at your own pace.
-                </p>
-                <p>
-                  Warmly,<br><strong>Sedona Inn Team</strong>
-                </p>
-                <p><a href="https://www.yourhotelwebsite.com/plan-your-return" class="email-button">Plan Your Return</a></p>
-              </div>
-              <div class="email-footer">
-                Sedona Inn | 123 Desert Road, Sedona, AZ | (555) 123-4567
-              </div>
-            </div>
-          `
-        },
-        {
-          title: "Winter Season",
-          content: `
-            <div class="email-container">
-              <img class="email-header-image" src="https://source.unsplash.com/600x200/?sedona,winter" alt="Sedona winter">
-              <div class="email-content">
-                <h1>Experience the Magic of Winter</h1>
-                <p>Dear [Guest Name],</p>
-                <p>
-                  Sedona transforms into a serene haven during winter. The crisp air and quiet trails create the perfect setting for reflection and rejuvenation.
-                </p>
-                <p>
-                  Enjoy exclusive winter tips, cozy spots, and local recommendations that capture the soulful side of Sedona.
-                </p>
-                <p>
-                  Stay warm and inspired,<br><strong>Sedona Inn Team</strong>
-                </p>
-                <p><a href="https://www.yourhotelwebsite.com/winter-tips" class="email-button">Learn More</a></p>
-              </div>
-              <div class="email-footer">
-                Sedona Inn | 123 Desert Road, Sedona, AZ | (555) 123-4567
-              </div>
-            </div>
-          `
-        },
-        {
-          title: "Summer Season",
-          content: `
-            <div class="email-container">
-              <img class="email-header-image" src="https://source.unsplash.com/600x200/?sedona,summer" alt="Sedona summer">
-              <div class="email-content">
-                <h1>Celebrate a Vibrant Summer</h1>
-                <p>Dear [Guest Name],</p>
-                <p>
-                  Sedona in summer bursts with color and energy. Enjoy sunlit hikes, lively local events, and unforgettable sunsets that create the perfect backdrop for adventure.
-                </p>
-                <p>
-                  Let us guide you through the best summer experiences to relive the magic and plan your next sunny escape.
-                </p>
-                <p>
-                  Cheers to summer,<br><strong>Sedona Inn Team</strong>
-                </p>
-                <p><a href="https://www.yourhotelwebsite.com/summer-highlights" class="email-button">Explore Summer</a></p>
-              </div>
-              <div class="email-footer">
-                Sedona Inn | 123 Desert Road, Sedona, AZ | (555) 123-4567
-              </div>
-            </div>
-          `
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="badge">LIMITED TIME SAVINGS</div>
+            <h1>Premium Email Marketing for Hospitality</h1>
+            <p>Connect with your guests through powerful, targeted email campaigns at a fraction of the cost</p>
+        </div>
+    </header>
+    <style>
+        header {
+            background: linear-gradient(120deg, #0038e0 0%, #5e17eb 100%);
+            position: relative;
+            overflow: hidden;
         }
-      ];
-
-      let currentStage = 0;
-
-      function updateContent() {
-        const contentArea = document.getElementById("contentArea");
-        contentArea.innerHTML = stages[currentStage].content;
-        updateStages();
-        document.getElementById("prevBtn").disabled = currentStage === 0;
-        document.getElementById("nextBtn").disabled = currentStage === stages.length - 1;
-      }
-
-      function updateStages() {
-        const stageElements = document.querySelectorAll(".stage");
-        const progressLineFilled = document.querySelector(".progress-line-filled");
-        stageElements.forEach((el, index) => {
-          el.classList.remove("active", "current");
-          if (index < currentStage) {
-            el.classList.add("active");
-          } else if (index === currentStage) {
-            el.classList.add("current");
-          }
-        });
-        const progressWidth = (currentStage / (stageElements.length - 1)) * 100;
-        progressLineFilled.style.width = progressWidth + "%";
-      }
-
-      document.getElementById("prevBtn").addEventListener("click", () => {
-        if (currentStage > 0) {
-          currentStage--;
-          updateContent();
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E"),
+                linear-gradient(120deg, #0038e0 0%, #5e17eb 100%);
+            background-size: 15%, 100%;
+            opacity: 1;
+            z-index: -1;
         }
-      });
-
-      document.getElementById("nextBtn").addEventListener("click", () => {
-        if (currentStage < stages.length - 1) {
-          currentStage++;
-          updateContent();
+    </style>
+    
+    <section class="problem-section">
+        <div class="container">
+            <div class="problem-container">
+                <h2 class="problem-title">The Challenge: Generic Email Platforms Don't Understand Hospitality</h2>
+                
+                <div class="problem-points">
+                    <div class="problem-point">
+                        <h3 class="problem-point-title">Lack of Industry Focus</h3>
+                        <p class="problem-point-text">Generic email platforms weren't built with hotels in mind, missing critical hospitality-specific features.</p>
+                    </div>
+                    
+                    <div class="problem-point">
+                        <h3 class="problem-point-title">Data Disconnection</h3>
+                        <p class="problem-point-text">No connection to your PMS means manual imports and lost opportunities to leverage guest history.</p>
+                    </div>
+                    
+                    <div class="problem-point">
+                        <h3 class="problem-point-title">Limited Segmentation</h3>
+                        <p class="problem-point-text">Basic demographic filters can't target based on stay history, booking patterns, or guest preferences.</p>
+                    </div>
+                    
+                    <div class="problem-point">
+                        <h3 class="problem-point-title">Excessive Pricing</h3>
+                        <p class="problem-point-text">Generic platforms charge premium rates for features that aren't tailored to hospitality needs, reducing your marketing ROI.</p>
+                    </div>
+                </div>
+                
+                <h3 class="problem-subtitle">The Result?</h3>
+                <p class="problem-text">Hotels are paying <span class="strong">premium prices</span> for generic tools that deliver <span class="strong">suboptimal results</span> and require complex workarounds to achieve hospitality-specific goals.</p>
+                
+                <div class="solution-text">
+                    <span class="highlight">GuestTouch</span> was built specifically for accommodation providers—a solution that understands the unique needs of guest communication and delivers higher ROI at <span class="highlight">40-60% less cost</span> than generic platforms.
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="comparison-section">
+        <div class="container">
+            <div class="comparison-header">
+                <h2>GuestTouch vs. Generic Email Platforms</h2>
+                <p>See why hospitality businesses are switching to the industry-specific solution</p>
+            </div>
+            
+            <div class="comparison-table">
+                <div class="comparison-column">
+                    <div class="comparison-title">GuestTouch</div>
+                    <div class="comparison-features">
+                        <div class="feature-item">
+                            <span class="feature-icon feature-check">✓</span>
+                            <span class="feature-text"><span class="strong">Purpose-built</span> for hotels and accommodations</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon feature-check">✓</span>
+                            <span class="feature-text"><span class="strong">Seamless PMS integration</span> included</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon feature-check">✓</span>
+                            <span class="feature-text"><span class="strong">Complete access</span> to guest history and details</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon feature-check">✓</span>
+                            <span class="feature-text"><span class="strong">Advanced</span> drag-and-drop email builder</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon feature-check">✓</span>
+                            <span class="feature-text"><span class="strong">Sophisticated</span> guest segmentation</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon feature-check">✓</span>
+                            <span class="feature-text"><span class="strong">Comprehensive</span> analytics and reporting</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon feature-check">✓</span>
+                            <span class="feature-text"><span class="strong">Direct booking</span> conversion tracking</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon feature-check">✓</span>
+                            <span class="feature-text"><span class="strong">Dedicated</span> hospitality support team</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon feature-check">✓</span>
+                            <span class="feature-text"><span class="strong">40-60% more affordable</span> than competitors</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="comparison-column">
+                    <div class="comparison-title generic-title">Generic Email Platforms</div>
+                    <div class="comparison-features">
+                        <div class="feature-item">
+                            <span class="feature-icon feature-error">✕</span>
+                            <span class="feature-text">General email tools <span class="strong">without industry focus</span></span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon feature-error">✕</span>
+                            <span class="feature-text"><span class="strong">No native PMS</span> integration</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon feature-error">✕</span>
+                            <span class="feature-text"><span class="strong">No guest data</span> tracking</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon feature-check">✓</span>
+                            <span class="feature-text"><span class="strong">Generic</span> drag-and-drop tools</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon feature-warning">⚠</span>
+                            <span class="feature-text"><span class="strong">Basic demographic</span> segmentation only</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon feature-warning">⚠</span>
+                            <span class="feature-text"><span class="strong">Basic automation</span> without hospitality context</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon feature-error">✕</span>
+                            <span class="feature-text"><span class="strong">No booking</span> capabilities</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon feature-error">✕</span>
+                            <span class="feature-text"><span class="strong">No dedicated</span> industry support</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon feature-warning">⚠</span>
+                            <span class="feature-text"><span class="strong">Often overpriced</span> for actual features used</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="pricing-section">
+        <div class="container">
+            <div class="pricing-header">
+                <h2>Simple, Transparent Pricing</h2>
+                <p>All plans include full features. Choose the volume that matches your needs.</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-card-header">
+                        <div class="pricing-emails">Up to <span class="strong">5,000</span> emails</div>
+                        <div class="pricing-price">
+                            <span class="currency">$</span>19<span class="period">/month</span>
+                        </div>
+                        <div class="pricing-savings">Save 50% vs. competitors</div>
+                    </div>
+                    <div class="pricing-body">
+                        <ul class="pricing-features">
+                            <li><span class="strong">Upload</span> specific past guest data</li>
+                            <li><span class="strong">PMS Integration</span> included</li>
+                            <li><span class="strong">Advanced</span> guest history access</li>
+                            <li><span class="strong">Advanced</span> guest segmentation</li>
+                            <li><span class="strong">Comprehensive</span> analytics</li>
+                            <li><span class="strong">Conversion</span> analysis</li>
+                            <li><span class="strong">Direct booking</span> tracking <span class="coming-soon">COMING SOON</span></li>
+                            <li><span class="strong">Dedicated</span> support</li>
+                        </ul>
+                        <a href="https://www.guesttouch.com/demo" class="btn btn-outline">Get Started</a>
+                    </div>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <div class="best-value">MOST POPULAR</div>
+                    <div class="pricing-card-header">
+                        <div class="pricing-emails">Up to <span class="strong">50,000</span> emails</div>
+                        <div class="pricing-price">
+                            <span class="currency">$</span>75<span class="period">/month</span>
+                        </div>
+                        <div class="pricing-savings">Save 40-60% vs. competitors</div>
+                    </div>
+                    <div class="pricing-body">
+                        <ul class="pricing-features">
+                            <li><span class="strong">Upload</span> specific past guest data</li>
+                            <li><span class="strong">PMS Integration</span> included</li>
+                            <li><span class="strong">Advanced</span> guest history access</li>
+                            <li><span class="strong">Advanced</span> guest segmentation</li>
+                            <li><span class="strong">Comprehensive</span> analytics</li>
+                            <li><span class="strong">Conversion</span> analysis</li>
+                            <li><span class="strong">Direct booking</span> tracking <span class="coming-soon">COMING SOON</span></li>
+                            <li><span class="strong">Dedicated</span> support</li>
+                        </ul>
+                        <a href="https://www.guesttouch.com/demo" class="btn">Get Started</a>
+                    </div>
+                </div>
+                
+                <div class="pricing-card">
+                    <div class="pricing-card-header">
+                        <div class="pricing-emails">Up to <span class="strong">250,000</span> emails</div>
+                        <div class="pricing-price">
+                            <span class="currency">$</span>189<span class="period">/month</span>
+                        </div>
+                        <div class="pricing-savings">Save 45% vs. competitors</div>
+                    </div>
+                    <div class="pricing-body">
+                        <ul class="pricing-features">
+                            <li><span class="strong">Upload</span> specific past guest data</li>
+                            <li><span class="strong">PMS Integration</span> included</li>
+                            <li><span class="strong">Advanced</span> guest history access</li>
+                            <li><span class="strong">Advanced</span> guest segmentation</li>
+                            <li><span class="strong">Comprehensive</span> analytics</li>
+                            <li><span class="strong">Conversion</span> analysis</li>
+                            <li><span class="strong">Direct booking</span> tracking <span class="coming-soon">COMING SOON</span></li>
+                            <li><span class="strong">Dedicated</span> support</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="testimonial">
+        <div class="container">
+            <h2 class="testimonial-header">What Our Customers Say</h2>
+            <div class="testimonial-widget">
+                <script type="text/javascript" src="https://testimonial.to/js/iframeResizer.min.js"></script> 
+                <iframe id='testimonialto-carousel-guesttouch-tag-all-light' src="https://embed-v2.testimonial.to/carousel/all/guesttouch?theme=light&autoplay=on&showmore=on&one-row=on&hideDate=on&hideSource&same-height=off&tag=all&arrowColor=9BA9B4&column-scale=0&cc=off" frameborder="0" scrolling="no" width="100%" rel="nofollow"></iframe> 
+                <script type="text/javascript">iFrameResize({log: false, checkOrigin: false}, '#testimonialto-carousel-guesttouch-tag-all-light');</script>
+            </div>
+        </div>
+    </section>
+    
+    <style>
+        .testimonial-header {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: var(--primary);
+            text-align: center;
         }
-      });
-
-      document.querySelectorAll(".stage").forEach((el, index) => {
-        el.addEventListener("click", () => {
-          currentStage = index;
-          updateContent();
-        });
-      });
-
-      // Initialize content on page load
-      updateContent();
-    </script>
-  </body>
+        
+        .testimonial-widget {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+    </style>
+    
+    <section class="cta">
+        <div class="container">
+            <h2>Limited Time Offer</h2>
+            <p>Sign up today and receive a <span class="strong">30-day free trial</span>, complimentary email template customization (<span class="highlight">$499 value</span>), and a free onboarding session with our hospitality email marketing experts.</p>
+            <a href="https://www.guesttouch.com/demo" class="cta-btn">Get Started Now</a>
+        </div>
+    </section>
+</body>
 </html>
