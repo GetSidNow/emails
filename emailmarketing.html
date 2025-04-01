@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Visualize Post-Stay Marketing Emails: Interactive Journey</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Using Google Fonts for a modern look -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet" />
+    <style>
+      body {
+        font-family: 'Montserrat', sans-serif;
+        background: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+      }
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .hdr {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      .hdr .title {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+        color: #4169E1;
+      }
+      .hdr .subtitle {
+        color: #666;
+        background-color: #e8f0fe;
+        padding: 4px 12px;
+        border-radius: 4px;
+        display: inline-block;
+      }
+      /* Progress Bar & Stages */
+      .progress-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 3rem;
+        position: relative;
+        padding: 0 20px;
+      }
+      .progress-line {
+        position: absolute;
+        height: 2px;
+        background: #e0e0e0;
+        left: 40px;
+        right: 40px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .progress-line-filled {
+        position: absolute;
+        height: 2px;
+        background: #4169E1;
+        left: 40px;
+        width: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: width 0.3s ease;
+      }
+      .stage {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 3;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+      }
+      .stage.active {
+        background: #4169E1;
+        color: white;
+      }
+      .stage.current {
+        border: 2px solid #4169E1;
+        background: white;
+      }
+      /* Content Area */
+      .content-area {
+        margin-top: 2rem;
+      }
+      .email-template {
+        background: #f8f9fe;
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+      }
+      /* Email Template Styles */
+      .email-container {
+        max-width: 600px;
+        margin: 0 auto;
+        background: #ffffff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+      .email-header-image {
+        width: 100%;
+        display: block;
+      }
+      .email-content {
+        padding: 20px;
+      }
+      .email-content h1 {
+        color: #4169E1;
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+      .email-content p {
+        color: #555;
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 16px;
+      }
+      .email-button {
+        display: inline-block;
+        padding: 12px 20px;
+        background: #4169E1;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: bold;
+      }
+      .email-footer {
+        padding: 15px;
+        font-size: 12px;
+        text-align: center;
+        color: #aaa;
+        background: #f9f9f9;
+      }
+      /* Navigation Buttons */
+      .navigation {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 2rem;
+      }
+      button {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        background: #4169E1;
+        color: white;
+        cursor: pointer;
+        transition: background 0.2s;
+        font-size: 1rem;
+      }
+      button:hover:not(:disabled) {
+        background: #3557D1;
+      }
+      button:disabled {
+        background: #e0e0e0;
+        cursor: not-allowed;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="hdr">
+        <h1 class="title">Visualize Post-Stay Marketing Emails</h1>
+        <div class="subtitle">Sedona, AZ Hotel</div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-line"></div>
+        <div class="progress-line-filled"></div>
+        <div class="stage" data-stage="0">1</div>
+        <div class="stage" data-stage="1">2</div>
+        <div class="stage" data-stage="2">3</div>
+        <div class="stage" data-stage="3">4</div>
+      </div>
+      <div id="contentArea" class="content-area">
+        <!-- Email template content will be injected here -->
+      </div>
+      <div class="navigation">
+        <button id="prevBtn">← Previous</button>
+        <button id="nextBtn">Next →</button>
+      </div>
+    </div>
+
+    <script>
+      // Define our four post-stay email templates
+      const stages = [
+        {
+          title: "Repeat Guests",
+          content: `
+            <div class="email-container">
+              <img class="email-header-image" src="https://source.unsplash.com/600x200/?sedona,loyalty" alt="Sedona view">
+              <div class="email-content">
+                <h1>We Love Your Loyalty!</h1>
+                <p>Dear [Guest Name],</p>
+                <p>
+                  Thank you for returning to Sedona time and again. Your trust inspires us to explore even more of what makes our little oasis so special.
+                  Enjoy exclusive local insights and stories curated just for you.
+                </p>
+                <p>
+                  With heartfelt appreciation,<br><strong>Sedona Inn Team</strong>
+                </p>
+                <p><a href="https://www.yourhotelwebsite.com/stories" class="email-button">Discover More</a></p>
+              </div>
+              <div class="email-footer">
+                Sedona Inn | 123 Desert Road, Sedona, AZ | (555) 123-4567
+              </div>
+            </div>
+          `
+        },
+        {
+          title: "Lapsed Guests",
+          content: `
+            <div class="email-container">
+              <img class="email-header-image" src="https://source.unsplash.com/600x200/?sedona,scenery" alt="Sedona view">
+              <div class="email-content">
+                <h1>We Miss You in Sedona</h1>
+                <p>Dear [Guest Name],</p>
+                <p>
+                  It’s been a while since your last visit, and we miss you at our Sedona retreat.
+                  Discover the new art installations, scenic trails, and cultural events transforming our charming town.
+                </p>
+                <p>
+                  We invite you to rediscover Sedona’s magic at your own pace.
+                </p>
+                <p>
+                  Warmly,<br><strong>Sedona Inn Team</strong>
+                </p>
+                <p><a href="https://www.yourhotelwebsite.com/plan-your-return" class="email-button">Plan Your Return</a></p>
+              </div>
+              <div class="email-footer">
+                Sedona Inn | 123 Desert Road, Sedona, AZ | (555) 123-4567
+              </div>
+            </div>
+          `
+        },
+        {
+          title: "Winter Season",
+          content: `
+            <div class="email-container">
+              <img class="email-header-image" src="https://source.unsplash.com/600x200/?sedona,winter" alt="Sedona winter">
+              <div class="email-content">
+                <h1>Experience the Magic of Winter</h1>
+                <p>Dear [Guest Name],</p>
+                <p>
+                  Sedona transforms into a serene haven during winter. The crisp air and quiet trails create the perfect setting for reflection and rejuvenation.
+                </p>
+                <p>
+                  Enjoy exclusive winter tips, cozy spots, and local recommendations that capture the soulful side of Sedona.
+                </p>
+                <p>
+                  Stay warm and inspired,<br><strong>Sedona Inn Team</strong>
+                </p>
+                <p><a href="https://www.yourhotelwebsite.com/winter-tips" class="email-button">Learn More</a></p>
+              </div>
+              <div class="email-footer">
+                Sedona Inn | 123 Desert Road, Sedona, AZ | (555) 123-4567
+              </div>
+            </div>
+          `
+        },
+        {
+          title: "Summer Season",
+          content: `
+            <div class="email-container">
+              <img class="email-header-image" src="https://source.unsplash.com/600x200/?sedona,summer" alt="Sedona summer">
+              <div class="email-content">
+                <h1>Celebrate a Vibrant Summer</h1>
+                <p>Dear [Guest Name],</p>
+                <p>
+                  Sedona in summer bursts with color and energy. Enjoy sunlit hikes, lively local events, and unforgettable sunsets that create the perfect backdrop for adventure.
+                </p>
+                <p>
+                  Let us guide you through the best summer experiences to relive the magic and plan your next sunny escape.
+                </p>
+                <p>
+                  Cheers to summer,<br><strong>Sedona Inn Team</strong>
+                </p>
+                <p><a href="https://www.yourhotelwebsite.com/summer-highlights" class="email-button">Explore Summer</a></p>
+              </div>
+              <div class="email-footer">
+                Sedona Inn | 123 Desert Road, Sedona, AZ | (555) 123-4567
+              </div>
+            </div>
+          `
+        }
+      ];
+
+      let currentStage = 0;
+
+      function updateContent() {
+        const contentArea = document.getElementById("contentArea");
+        contentArea.innerHTML = stages[currentStage].content;
+        updateStages();
+        document.getElementById("prevBtn").disabled = currentStage === 0;
+        document.getElementById("nextBtn").disabled = currentStage === stages.length - 1;
+      }
+
+      function updateStages() {
+        const stageElements = document.querySelectorAll(".stage");
+        const progressLineFilled = document.querySelector(".progress-line-filled");
+        stageElements.forEach((el, index) => {
+          el.classList.remove("active", "current");
+          if (index < currentStage) {
+            el.classList.add("active");
+          } else if (index === currentStage) {
+            el.classList.add("current");
+          }
+        });
+        const progressWidth = (currentStage / (stageElements.length - 1)) * 100;
+        progressLineFilled.style.width = progressWidth + "%";
+      }
+
+      document.getElementById("prevBtn").addEventListener("click", () => {
+        if (currentStage > 0) {
+          currentStage--;
+          updateContent();
+        }
+      });
+
+      document.getElementById("nextBtn").addEventListener("click", () => {
+        if (currentStage < stages.length - 1) {
+          currentStage++;
+          updateContent();
+        }
+      });
+
+      document.querySelectorAll(".stage").forEach((el, index) => {
+        el.addEventListener("click", () => {
+          currentStage = index;
+          updateContent();
+        });
+      });
+
+      // Initialize content on page load
+      updateContent();
+    </script>
+  </body>
+</html>
